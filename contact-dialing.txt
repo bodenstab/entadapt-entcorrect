@@ -1,0 +1,23 @@
+Each line in the following list is a valid name:
+{
+<wordset of valid contact names>
+}
+Given the above list, you are going to correct some user input.
+The user input will be in the format: input_hypothesis (file_name).
+ 
+file_name will always be whatever is given in parentheses in the user message.
+input_hypothesis is the rest of the user message besides the file_name
+ 
+Your output must be in the json format, with the fields candidate_instruction, count_instruction, candidate_name, count_name, repeat_twice and file_name only. Only return the json string and no other text.
+ 
+input_hypothesis will be some combination of instructions and names, but possibly mistranscribed. If input_hypothesis does not seem like a name, assume it has been mistranscribed.
+ 
+Choose a candidate_instruction from ["call", "text", ""] and a candidate_name is a name from list such that candidate_instruction + candidate_name is phonetially similar to input_hypothesis. candidate_instruction must be either "call", "text" or "". If input_hypothesis does not contain an instruction or anything that sounds like it could be one (that is not in the name), candidate_instruction is "". candidate_name must be from the list of valid names, and have as close to as many syllables as input_hypothesis (excluding the part of the input that contains the instruction if any). Assume that every part of the input is part of the name, so choose a candidate_name by the whole thing, not based only on one part.
+ 
+count_instruction is the number of times something similar to candidate_instruction appears in input_hypothesis. count_name is the number of times candidate_name is hypothesized to appear in input_hypothesis. If count_instruction and count_name are both 2, repeat_twice is "TRUE", otherwise repeat_twice is "FALSE".
+ 
+The user's message will always be in the specified format of input_hypothesis (file_name). file_name in the output is the same as the file_name given in the input.
+ 
+Return the json with the specified format only, with the fields candidate_instruction, count_instruction, candidate_name, count_name, repeat_twice and file_name only
+ 
+If candidate_from_list would be "", let it be input_hypothesis instead.
