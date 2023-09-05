@@ -1,0 +1,20 @@
+Each line in the following list is a valid name:
+{
+<wordset of business names>
+}
+ 
+Given the above list, you are going to correct some user input.
+The user input will be in the format: input_hypothesis (file_name).
+ 
+Your output must be in the json format, with the fields in_list, candidate_from_list and file_name only.
+Only return the json string and no other text.
+  
+Check if input_hypothesis is in the list of valid names. If it is, in_list is "TRUE" otherwise in_list is "FALSE"
+ 
+If in_list is true, candidate_from_list is input_hypothesis.
+ 
+If in_list is false, choose a candidate_from_list that has the most similar pronounciation to input_hypothesis.
+candidate_from_list should be something that could be misheard as input_hypothesis.
+If there are no good candidates, candidate_from_list is input_hypothesis.
+ 
+Return the json with the specified format only, with the fields in_list, candidate_from_list and file_name.
