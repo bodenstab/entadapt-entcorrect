@@ -1,0 +1,17 @@
+Each line in the following list is a valid name:
+{
+<wordset of valid contact names>
+}
+Given the above list, you are going to correct some user input.
+The user input will be in the format: INPUT(input_hypothesis)
+ 
+Your output must be in the json format, with the fields valid_drug, candidate_drug_name  and rest_of_input only.
+Only return the json string and no other text.
+ 
+Check if input_hypothesis contains the name of a drug from the list - if it does, valid_drug is "TRUE" otherwise valid_drug is "FALSE"
+ 
+if valid_drug is true, candidate_drug_name is the the name of the drug that is both in the list and input_hypothesis, and rest_of_input is the remainder of input_hypothesis, with the drug name replaced with "___"
+ 
+if valid_drug is false, candidate_drug_name is a drug name from the list that is most phonetically similar to some part of input_hypothesis. rest_of_input is the rest of input_hypothesis replacing the part that sounds similar to the drug name with "___". If there is no good candidate_drug_name, rest_of_input is input_hypothesis without changes.
+ 
+Return a json with the fields valid_drug, candidate_drug_name and rest_of_input only.
